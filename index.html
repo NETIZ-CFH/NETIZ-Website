@@ -129,14 +129,17 @@
 
         .lang-dropdown {
             position: absolute; 
-            top: 100%; 
-            right: 0; 
+            top: calc(100% + 5px);
+            right: 50%;
+            transform: translateX(50%);
             background: #fff; 
             border: 1px solid var(--glass-border);
-            width: 80px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 60px; 
             display: none; 
             flex-direction: column; 
             padding: 5px 0;
+            text-align: center;
         }
 
         .lang-picker:hover .lang-dropdown { 
@@ -144,8 +147,9 @@
         }
 
         .lang-dropdown span { 
-            padding: 8px 15px; 
-            transition: 0.2s; 
+            padding: 8px 10px; 
+            transition: 0.2s;
+            cursor: pointer;
         }
 
         .lang-dropdown span:hover { 
@@ -813,13 +817,50 @@
 
         @media (max-width: 700px) { 
             .solutions-grid { 
-                grid-template-columns: 1fr; 
-            } 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .sol-card {
+                height: 200px;
+            }
+            
+            .sol-info {
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .sol-info svg {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .sol-info h3 {
+                font-size: 16px;
+            }
         }
 
         @media (max-width: 650px) {
             .impact-grid { 
-                grid-template-columns: 1fr; 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .impact-card {
+                height: 190px;
+                padding: 25px 15px;
+            }
+            
+            .card-big-num {
+                font-size: 48px;
+            }
+            
+            .card-big-label {
+                font-size: 14px;
+            }
+            
+            .card-big-info {
+                font-size: 13px;
             }
         }
 
@@ -943,7 +984,7 @@
             <div class="impact-grid">
                 
                 <div class="impact-card">
-                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=800');"></div>
+                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1545424920-b978eefcde48?q=80&w=800');"></div>
                     <div class="card-text-content">
                         <div class="card-big-num">07</div>
                         <span class="card-big-label">Countries</span>
@@ -952,7 +993,7 @@
                 </div>
 
                 <div class="impact-card">
-                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800');"></div>
+                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800');"></div>
                     <div class="card-text-content">
                         <div class="card-big-num">30+</div>
                         <span class="card-big-label">Projects</span>
@@ -961,7 +1002,7 @@
                 </div>
 
                 <div class="impact-card">
-                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800');"></div>
+                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=800');"></div>
                     <div class="card-text-content">
                         <div class="card-big-num">10+</div>
                         <span class="card-big-label">Partners</span>
@@ -970,7 +1011,7 @@
                 </div>
 
                 <div class="impact-card">
-                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1551808834-f7d91f7a120e?q=80&w=800');"></div>
+                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1649348353188-9d59e168ca4b?q=80&w=800');"></div>
                     <div class="card-text-content">
                         <div class="card-big-num">99%</div>
                         <span class="card-big-label">Stability</span>
@@ -989,8 +1030,8 @@
         <div class="fold-container">
             
             <div class="fold-header">
-                <h2>Enterprise Solutions</h2>
-                <div class="fold-header-meta">// STABLE_BUILD_2026</div>
+                <h2>Enterprise Solutions.</h2>
+                <div class="fold-header-meta">// SYSTEM_SPEC</div>
             </div>
 
             <div class="solutions-grid">
@@ -1093,7 +1134,7 @@
 
                     <div class="f-col">
                         <h4>Contacts</h4>
-                        <a href="/cdn-cgi/l/email-protection#f281939e9781b29c97869b88dc9b9d" class="f-email"><span class="__cf_email__" data-cfemail="7201131e1701321c17061b085c1b1d">[email&#160;protected]</span></a>
+                        <a href="mailto:sales@netiz.io" class="f-email"><span class="__cf_email__" data-cfemail="7201131e1701321c17061b085c1b1d"><span class="__cf_email__" data-cfemail="b2c1d3ded7c1f2dcd7c6dbc89cdbdd">sales@netiz.io</span></span></a>
                         
                         <div class="f-social-grid">
                             <a href="#" class="f-social-btn" title="LINE" aria-label="LINE">
@@ -1141,14 +1182,20 @@
         const menu = document.getElementById('mobile-menu');
         const mLinks = document.querySelectorAll('.m-link');
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
+        // Function to update navbar state based on scroll position
+        function updateNavbar() {
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
             }
-        });
+        }
+
+        // Check scroll position on page load
+        updateNavbar();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', updateNavbar);
 
         // Mobile Menu Toggle
         toggle.addEventListener('click', () => {
