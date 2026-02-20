@@ -161,27 +161,52 @@
         .menu-toggle { 
             display: none; 
             cursor: pointer; 
-            z-index: 1001; 
+            z-index: 1001;
+            position: relative;
+            width: 25px;
+            height: 20px;
         }
 
         .menu-toggle div { 
             width: 25px; 
             height: 2px; 
             background: var(--text-main); 
-            margin: 6px 0; 
-            transition: 0.4s; 
+            position: absolute;
+            left: 0;
+            transition: 0.4s ease; 
         }
 
+        /* Position each line */
+        .menu-toggle .line1 {
+            top: 0;
+        }
+
+        .menu-toggle .line2,
+        .menu-toggle .line3 {
+            top: 9px; /* Overlapped in the middle */
+        }
+
+        .menu-toggle .line4 {
+            top: 18px;
+        }
+
+        /* Open state - Form X with lines 2 and 3, hide lines 1 and 4 */
         .menu-toggle.open .line1 { 
-            transform: rotate(-45deg) translate(-5px, 6px); 
+            opacity: 0;
+            transform: translateY(10px);
         }
 
         .menu-toggle.open .line2 { 
-            opacity: 0; 
+            transform: rotate(45deg);
         }
 
         .menu-toggle.open .line3 { 
-            transform: rotate(45deg) translate(-5px, -6px); 
+            transform: rotate(-45deg);
+        }
+
+        .menu-toggle.open .line4 { 
+            opacity: 0;
+            transform: translateY(-10px);
         }
 
         /* Mobile Overlay */
@@ -920,6 +945,7 @@
                     <div class="line1"></div>
                     <div class="line2"></div>
                     <div class="line3"></div>
+                    <div class="line4"></div>
                 </div>
             </div>
         </div>
@@ -1134,7 +1160,7 @@
 
                     <div class="f-col">
                         <h4>Contacts</h4>
-                        <a href="mailto:sales@netiz.io" class="f-email"><span class="__cf_email__" data-cfemail="7201131e1701321c17061b085c1b1d"><span class="__cf_email__" data-cfemail="b2c1d3ded7c1f2dcd7c6dbc89cdbdd">sales@netiz.io</span></span></a>
+                        <a href="sales@netiz.io" class="f-email"><span class="__cf_email__" data-cfemail="7201131e1701321c17061b085c1b1d"><span class="__cf_email__" data-cfemail="b2c1d3ded7c1f2dcd7c6dbc89cdbdd">[email&#160;protected]</span></span></a>
                         
                         <div class="f-social-grid">
                             <a href="#" class="f-social-btn" title="LINE" aria-label="LINE">
