@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
     <!-- Primary Meta Tags -->
     <title>NETIZ | IT Infrastructure & Network Intelligence Solutions</title>
@@ -75,7 +75,9 @@
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background: var(--bg); 
             color: var(--text-main); 
-            overflow-x: hidden; 
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
         }
 
         body.menu-open { 
@@ -166,7 +168,8 @@
         .nav-right { 
             display: flex; 
             align-items: center; 
-            gap: 30px; 
+            gap: 30px;
+            flex-shrink: 0;
         }
 
         .nav-links { 
@@ -356,9 +359,10 @@
 
         .hero-brand-logo {
             width: 100%;
-            max-width: 350px;
+            max-width: min(350px, 100%);
             height: auto;
             margin-bottom: 20px;
+            display: block;
             /* Orange color filter for SVG */
             filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(6deg) brightness(102%) contrast(102%);
         }
@@ -622,20 +626,22 @@
 
         .solutions-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(5, 1fr);
+            /*gap: 15px;*/  
         }
 
         .sol-card {
             position: relative;
-            height: 220px;
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
             background: var(--black);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            display: block;
             text-decoration: none;
             overflow: hidden;
             transition: transform 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .sol-img {
@@ -646,13 +652,13 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            filter: grayscale(100%) brightness(0.35);
-            z-index: 1;
+            filter: grayscale(50%) brightness(0.35);
+            z-index: 0;
             transition: 0.6s ease;
         }
 
         .sol-card:hover .sol-img {
-            filter: grayscale(0%) brightness(0.5);
+            filter: grayscale(0%) brightness(0.8);
             transform: scale(1.1);
         }
 
@@ -663,12 +669,15 @@
             left: 0; 
             width: 100%; 
             height: 80%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent);
             z-index: 2;
         }
 
         .sol-info {
-            position: relative;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
             z-index: 3;
             padding: 25px;
             display: flex;
@@ -701,6 +710,140 @@
         .bg-sol-6 { background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800'); }
         .bg-sol-7 { background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800'); }
         .bg-sol-8 { background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800'); }
+
+        /* Decorative sol-cards - 2x2 color grid */
+        .sol-card-decorative {
+            display: block;
+            overflow: visible;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sol-card-decorative::after {
+            display: none; /* Remove gradient overlay */
+        }
+
+        .deco-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0;
+        }
+
+        .deco-box {
+            width: 100%;
+            height: 100%;
+        }
+
+        .deco-black {
+            background-color: var(--black);
+        }
+
+        .deco-orange {
+            background-color: var(--primary);
+        }
+
+        .deco-white {
+            background-color: #ffffff;
+        }
+
+        /* ============================================
+           STANDARD TEXT SECTION (4TH SECTION)
+           ============================================ */
+        .section-standard {
+            background-color: #ffffff;
+            padding: 80px 5%;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .standard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .standard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px; 
+        }
+
+        .standard-col {
+            position: relative;
+            background-color: #ffffff;
+            padding: 60px 40px;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .standard-col:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* Ghost Background Images - Greyed/Whiter Tone */
+        .col-bg {
+            position: absolute;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%) brightness(1.1);
+            opacity: 0.08;
+            z-index: 1;
+        }
+
+        .col-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Orange Brand Labels */
+        .standard-col .tech-label {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .standard-col h2 {
+            font-size: 26px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            color: var(--text-main);
+        }
+
+        .standard-col p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .standard-col p b {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        /* Standard section background images */
+        .bg-standard-1 { background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1000'); }
+        .bg-standard-2 { background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200'); }
+        .bg-standard-3 { background-image: url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1000'); }
 
         /* ============================================
            FOOTER
@@ -882,7 +1025,16 @@
         @media (max-width: 1100px) { 
             .solutions-grid { 
                 grid-template-columns: repeat(2, 1fr); 
-            } 
+            }
+
+            /* Standard section - stack to single column */
+            .standard-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .standard-col { 
+                min-height: auto; 
+            }
         }
 
         @media (max-width: 1024px) {
@@ -892,6 +1044,15 @@
             
             .menu-toggle { 
                 display: block; 
+            }
+
+            /* Reduce nav spacing on mobile */
+            .nav-right {
+                gap: 15px;
+            }
+
+            .nav-container {
+                padding: 0 4%;
             }
             
             .hero-mosaic { 
@@ -972,8 +1133,13 @@
             }
             
             .sol-card {
-                height: 200px;
+                /* Maintain square aspect ratio */
                 pointer-events: none; /* Disable clicks on mobile */
+            }
+
+            /* Hide decorative cards on mobile */
+            .sol-card-decorative {
+                display: none;
             }
             
             .sol-info {
@@ -1340,6 +1506,24 @@
                     </div>
                 </a>
 
+                <div class="sol-card sol-card-decorative">
+                    <div class="deco-grid">
+                        <div class="deco-box deco-black"></div>
+                        <div class="deco-box deco-black"></div>
+                        <div class="deco-box deco-black"></div>
+                        <div class="deco-box deco-black"></div>
+                    </div>
+                </div>
+                
+                <div class="sol-card sol-card-decorative">
+                    <div class="deco-grid">
+                        <div class="deco-box deco-black"></div>
+                        <div class="deco-box deco-black"></div>
+                        <div class="deco-box deco-black"></div>
+                        <div class="deco-box deco-black"></div>
+                    </div>
+                </div>
+
                 <a href="#surveillance" class="sol-card">
                     <div class="sol-img bg-sol-5" role="img" aria-label="Surveillance camera system"></div>
                     <div class="sol-info">
@@ -1389,6 +1573,59 @@
         </div>
     </section>
 
+    <!-- ============================================
+         STANDARD TEXT SECTION (4TH SECTION)
+         ============================================ -->
+    <section class="section-standard" id="standard">
+        <div class="standard-container">
+            <div class="standard-grid">
+                
+                <div class="standard-col">
+                    <div class="col-bg bg-standard-1" role="img" aria-label="Team collaboration representing technical standards"></div>
+                    <div class="col-content">
+                        <span class="tech-label">// ARCHITECTURAL_LOGIC</span>
+                        <h2>Foundations Built on Global Standards.</h2>
+                        <p>
+                            Reliable IT infrastructure serves as the essential backbone of modern operational success. We utilize international standard frameworks to design environments that meet a diversity of requirements with technical precision.
+                        </p>
+                        <p>
+                            Every solution is architectured for maximum stability and long-term scalability. By deploying advanced skilled engineers, we ensure your digital foundation remains a strategic asset.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="standard-col">
+                    <div class="col-bg bg-standard-2" role="img" aria-label="Business meeting representing strategic consultancy"></div>
+                    <div class="col-content">
+                        <span class="tech-label">// STRATEGIC_ALIGNMENT</span>
+                        <h2>Consultancy Rooted in Business Goals.</h2>
+                        <p>
+                            We believe technology should be a catalyst for growth, not a source of friction. Our expert-led consultancy identifies the unique obstacles within your organization, translating technical requirements into actionable solutions.
+                        </p>
+                        <p>
+                            By listening to every challenge—even those beyond the traditional scope of IT—we design ecosystems that maximize work efficiency and ensure a problem-free operational landscape built on your specific goals.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="standard-col">
+                    <div class="col-bg bg-standard-3" role="img" aria-label="Support team representing service commitment"></div>
+                    <div class="col-content">
+                        <span class="tech-label">// SERVICE_COMMITMENT</span>
+                        <h2>Dedication to User Satisfaction.</h2>
+                        <p>
+                            Technical excellence is only half of the equation. We believe true partnership is rooted in a relentless dedication to service and uncompromising user satisfaction.
+                        </p>
+                        <p>
+                            From meticulous cabling that respects your interior design to certified support teams standing by 24/7, we suppress incidents before they impact performance. We listen to every challenge to ensure technology evolves with your business.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     </main>
 
     <!-- ============================================
@@ -1419,7 +1656,7 @@
 
                     <div class="f-col">
                         <h4>Contacts</h4>
-                        <a href="mailto:sales@netiz.io" class="f-email"><span class="__cf_email__" data-cfemail="7201131e1701321c17061b085c1b1d"><span class="__cf_email__" data-cfemail="b2c1d3ded7c1f2dcd7c6dbc89cdbdd"><span class="__cf_email__" data-cfemail="90e3f1fcf5e3d0fef5e4f9eabef9ff">sales@netiz.io</span></span></span></a>
+                        <a href="/cdn-cgi/l/email-protection#0172606d6472416f6475687b2f686e" class="f-email"><span class="__cf_email__" data-cfemail="7201131e1701321c17061b085c1b1d"><span class="__cf_email__" data-cfemail="b2c1d3ded7c1f2dcd7c6dbc89cdbdd"><span class="__cf_email__" data-cfemail="90e3f1fcf5e3d0fef5e4f9eabef9ff">[email&#160;protected]</span></span></span></a>
                         
                         <div class="f-social-grid">
                             <a href="#" class="f-social-btn" title="LINE" aria-label="LINE">
