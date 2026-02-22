@@ -3,10 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NETIZ | IT Infrastructure & Network Intelligence</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>NETIZ | IT Infrastructure & Network Intelligence Solutions</title>
+    <meta name="title" content="NETIZ | IT Infrastructure & Network Intelligence Solutions">
+    <meta name="description" content="High-performance IT Infrastructure and Network Solutions designed for absolute stability. Expert consultancy, network security, system storage, and ransomware rescue services across Asia.">
+    <meta name="keywords" content="IT infrastructure, network solutions, network security, system storage, surveillance, ransomware rescue, event organizer, IT consultancy, enterprise solutions, Asia">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Netiz Co., Ltd.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.netiz.io/">
+    <meta property="og:title" content="NETIZ | IT Infrastructure & Network Intelligence Solutions">
+    <meta property="og:description" content="High-performance IT Infrastructure and Network Solutions designed for absolute stability. Expert consultancy, network security, and enterprise solutions.">
+    <meta property="og:image" content="https://www.netiz.io/img/netiz-og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.netiz.io/">
+    <meta property="twitter:title" content="NETIZ | IT Infrastructure & Network Intelligence Solutions">
+    <meta property="twitter:description" content="High-performance IT Infrastructure and Network Solutions designed for absolute stability. Expert consultancy, network security, and enterprise solutions.">
+    <meta property="twitter:image" content="https://www.netiz.io/img/netiz-twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.netiz.io/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="img/NETIZ-icon.svg">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    
+    <!-- Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@500;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
+    
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#FF6900">
     <style>
         /* ============================================
            GLOBAL VARIABLES & RESETS
@@ -42,6 +80,36 @@
 
         body.menu-open { 
             overflow: hidden; 
+        }
+
+        /* Skip to main content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 700;
+            z-index: 10000;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Screen reader only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
 
         /* ============================================
@@ -83,11 +151,16 @@
         .logo img {
             height: 40px;
             width: auto;
-            transition: 0.3s ease;
+            transition: opacity 0.3s ease, height 0.3s ease;
+            opacity: 0;
+            will-change: opacity, height;
+            /* Orange color filter for SVG */
+            filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(6deg) brightness(102%) contrast(102%);
         }
 
         nav.scrolled .logo img {
             height: 35px;
+            opacity: 1;
         }
 
         .nav-right { 
@@ -173,7 +246,8 @@
             background: var(--text-main); 
             position: absolute;
             left: 0;
-            transition: 0.4s ease; 
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            will-change: transform, opacity;
         }
 
         /* Position each line */
@@ -232,11 +306,11 @@
         }
 
         .mobile-overlay a { 
-            font-size: 40px; 
+            font-size: 32px; 
             font-weight: 800; 
             text-decoration: none; 
             color: var(--text-main); 
-            margin: 15px 0; 
+            margin: 12px 0; 
             text-transform: uppercase; 
             letter-spacing: -2px; 
         }
@@ -268,22 +342,42 @@
 
         .brand-core-stack {
             width: 100%;
-            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .brand-identity {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-brand-logo {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            margin-bottom: 20px;
+            /* Orange color filter for SVG */
+            filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(6deg) brightness(102%) contrast(102%);
         }
 
         .hero-id-panel h1 {
             font-size: clamp(50px, 8vw, 100px);
             font-weight: 800;
-            letter-spacing: -6px;
-            color: var(--primary);
+            letter-spacing: 1px;
+            color: var(--text-main);
             line-height: 0.8;
-            margin-bottom: 30px;
+            margin: 0;
             text-transform: uppercase;
+            text-align: center;
         }
 
         .motto-accent {
             border-left: 6px solid var(--primary);
             padding: 5px 0 5px 30px;
+            max-width: 500px;
         }
 
         .motto-accent p {
@@ -317,7 +411,8 @@
         .mosaic-img {
             background-size: cover;
             background-position: center;
-            transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: filter 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: filter, transform;
         }
 
         .mosaic-cell:hover .mosaic-img {
@@ -350,6 +445,15 @@
             color: var(--text-dim);
             line-height: 1.5;
             max-width: 280px;
+        }
+
+        /* Hero background images */
+        .bg-hero-pcb {
+            background-image: url('img/hero-pcb.png');
+        }
+
+        .bg-hero-server {
+            background-image: url('img/hero-server-cables.png');
         }
 
         /* ============================================
@@ -468,6 +572,12 @@
             font-weight: 500;
         }
 
+        /* Impact card background images */
+        .bg-impact-1 { background-image: url('https://images.unsplash.com/photo-1545424920-b978eefcde48?q=80&w=800'); }
+        .bg-impact-2 { background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800'); }
+        .bg-impact-3 { background-image: url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=800'); }
+        .bg-impact-4 { background-image: url('https://images.unsplash.com/photo-1649348353188-9d59e168ca4b?q=80&w=800'); }
+
         /* ============================================
            SOLUTIONS SECTION (3RD SECTION)
            ============================================ */
@@ -507,12 +617,12 @@
         .fold-header-meta {
             font-family: 'JetBrains Mono', monospace;
             font-weight: 800;
-            color: var(--black);
+            color: var(--text-white);
         }
 
         .solutions-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
         }
 
@@ -582,6 +692,16 @@
             margin: 0;
         }
 
+        /* Solution card background images */
+        .bg-sol-1 { background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop'); }
+        .bg-sol-2 { background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800'); }
+        .bg-sol-3 { background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800'); }
+        .bg-sol-4 { background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=800&auto=format&fit=crop'); }
+        .bg-sol-5 { background-image: url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800'); }
+        .bg-sol-6 { background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800'); }
+        .bg-sol-7 { background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800'); }
+        .bg-sol-8 { background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800'); }
+
         /* ============================================
            FOOTER
            ============================================ */
@@ -615,7 +735,6 @@
         .f-logo {
             font-size: 48px;
             font-weight: 900;
-            letter-spacing: -3px;
             text-decoration: none;
             color: var(--primary);
             margin-bottom: 20px;
@@ -754,6 +873,12 @@
             }
         }
 
+        @media (max-width: 1200px) { 
+            .solutions-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+            } 
+        }
+
         @media (max-width: 1100px) { 
             .solutions-grid { 
                 grid-template-columns: repeat(2, 1fr); 
@@ -848,6 +973,7 @@
             
             .sol-card {
                 height: 200px;
+                pointer-events: none; /* Disable clicks on mobile */
             }
             
             .sol-info {
@@ -887,6 +1013,16 @@
             .card-big-info {
                 font-size: 13px;
             }
+            
+            /* Reduce top padding for Regional Excellence section in mobile */
+            .section-impact {
+                padding: 60px 5%;
+            }
+            
+            /* Hide Quicklinks section in footer on mobile */
+            .footer-right .f-col:first-child {
+                display: none;
+            }
         }
 
         @media (max-width: 600px) {
@@ -907,25 +1043,111 @@
             }
         }
     </style>
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Netiz Co., Ltd.",
+        "alternateName": "NETIZ",
+        "url": "https://www.netiz.io",
+        "logo": "https://www.netiz.io/img/NETIZ-icon.svg",
+        "description": "High-performance IT Infrastructure and Network Solutions designed for absolute stability",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "TH",
+            "addressRegion": "Asia"
+        },
+        "sameAs": [
+            "https://www.facebook.com/netiz",
+            "https://line.me/ti/p/@netiz"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+66-x-xxxx-xxxx",
+            "contactType": "Sales",
+            "email": "sales@netiz.io",
+            "availableLanguage": ["English", "Thai"]
+        },
+        "areaServed": [
+            {
+                "@type": "Country",
+                "name": "Thailand"
+            },
+            {
+                "@type": "GeoShape",
+                "name": "Asia"
+            }
+        ],
+        "serviceType": [
+            "IT Infrastructure",
+            "Network Solutions",
+            "Network Security",
+            "System Storage",
+            "IT Consultancy",
+            "Surveillance & Monitoring",
+            "Ransomware Rescue",
+            "Event Organization"
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.netiz.io/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://www.netiz.io/#solutions"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Performance",
+                "item": "https://www.netiz.io/#impact"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Contact",
+                "item": "https://www.netiz.io/#contact"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- ============================================
          NAVIGATION
          ============================================ -->
-    <nav id="navbar">
+    <header>
+        <nav id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="img/netiz-logo.webp" alt="NETIZ">
+                <img src="img/NETIZ-icon.svg" alt="NETIZ">
             </a>
             
             <div class="nav-right">
                 <div class="nav-links">
-                    <a href="#">Home</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Solutions</a>
-                    <a href="#">Projects</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#home">Home</a>
+                    <a href="#aboutus">About Us</a>
+                    <a href="#solution">Solutions</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contacts">Contact</a>
                 </div>
 
                 <div class="lang-picker">
@@ -941,7 +1163,7 @@
                     </div>
                 </div>
 
-                <div class="menu-toggle" id="mobile-toggle">
+                <div class="menu-toggle" id="mobile-toggle" aria-label="Toggle mobile menu" role="button" aria-expanded="false">
                     <div class="line1"></div>
                     <div class="line2"></div>
                     <div class="line3"></div>
@@ -950,23 +1172,32 @@
             </div>
         </div>
     </nav>
+    </header>
 
     <!-- Mobile Overlay Menu -->
-    <div class="mobile-overlay" id="mobile-menu">
+    <nav class="mobile-overlay" id="mobile-menu" aria-label="Mobile navigation">
         <a href="#" class="m-link">Home</a>
         <a href="#" class="m-link">About Us</a>
         <a href="#" class="m-link">Solutions</a>
         <a href="#" class="m-link">Projects</a>
         <a href="#" class="m-link">Contact</a>
-    </div>
+    </nav>
+
+    <!-- ============================================
+         MAIN CONTENT
+         ============================================ -->
+    <main id="main-content">
 
     <!-- ============================================
          HERO SECTION - MOSAIC LAYOUT
          ============================================ -->
-    <section class="hero-mosaic">
+    <section class="hero-mosaic" aria-label="Hero section">
         <div class="hero-id-panel">
             <div class="brand-core-stack">
-                <h1>NETIZ</h1>
+                <div class="brand-identity">
+                    <img src="img/NETIZ-icon.svg" alt="NETIZ - IT Infrastructure & Network Intelligence Solutions Provider" class="hero-brand-logo">
+                    <h1>NETIZ<span class="sr-only"> - IT Infrastructure & Network Intelligence Solutions</span></h1>
+                </div>
                 <div class="motto-accent">
                     <p>We don't just build it.<br>We are part of it.</p>
                 </div>
@@ -974,13 +1205,14 @@
         </div>
 
         <div class="hero-visual-panel">
+            <h2 class="sr-only">Our Core Services</h2>
             
-            <div class="mosaic-cell mosaic-img" style="background-image: url('img/hero-pcb.png');">
+            <div class="mosaic-cell mosaic-img bg-hero-pcb" role="img" aria-label="Printed circuit board representing technology infrastructure">
             </div>
 
             <div class="mosaic-cell">
-                <span>// THE FOUNDATION</span>
-                <h3>IT<br>Infrastructure</h3>
+                <span>// THE CORE</span>
+                <h3>Tech<br>Foundations</h3>
                 <p>Comprehensive server, storage, and virtualization environments engineered for 24/7 reliability.</p>
             </div>
 
@@ -990,7 +1222,7 @@
                 <p>High-specification network architecture and Wi-Fi systems built for seamless enterprise-wide performance.</p>
             </div>
 
-            <div class="mosaic-cell mosaic-img" style="background-image: url('img/hero-server-cables.png');">
+            <div class="mosaic-cell mosaic-img bg-hero-server" role="img" aria-label="Server room cables representing network connectivity">
             </div>
 
         </div>
@@ -1010,7 +1242,7 @@
             <div class="impact-grid">
                 
                 <div class="impact-card">
-                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1545424920-b978eefcde48?q=80&w=800');"></div>
+                    <div class="card-bg-layer bg-impact-1" role="img" aria-label="World map representing global reach"></div>
                     <div class="card-text-content">
                         <div class="card-big-num">07</div>
                         <span class="card-big-label">Countries</span>
@@ -1019,7 +1251,7 @@
                 </div>
 
                 <div class="impact-card">
-                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800');"></div>
+                    <div class="card-bg-layer bg-impact-2" role="img" aria-label="Industrial facility representing project scale"></div>
                     <div class="card-text-content">
                         <div class="card-big-num">30+</div>
                         <span class="card-big-label">Projects</span>
@@ -1028,7 +1260,7 @@
                 </div>
 
                 <div class="impact-card">
-                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=800');"></div>
+                    <div class="card-bg-layer bg-impact-3" role="img" aria-label="Business handshake representing partnerships"></div>
                     <div class="card-text-content">
                         <div class="card-big-num">10+</div>
                         <span class="card-big-label">Partners</span>
@@ -1037,7 +1269,7 @@
                 </div>
 
                 <div class="impact-card">
-                    <div class="card-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1649348353188-9d59e168ca4b?q=80&w=800');"></div>
+                    <div class="card-bg-layer bg-impact-4" role="img" aria-label="Server infrastructure representing system stability"></div>
                     <div class="card-text-content">
                         <div class="card-big-num">99%</div>
                         <span class="card-big-label">Stability</span>
@@ -1056,14 +1288,14 @@
         <div class="fold-container">
             
             <div class="fold-header">
-                <h2>Enterprise Solutions.</h2>
+                <h2>Professional Solutions.</h2>
                 <div class="fold-header-meta">// SYSTEM_SPEC</div>
             </div>
 
             <div class="solutions-grid">
                 
-                <a href="#" class="sol-card">
-                    <div class="sol-img" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop');"></div>
+                <a href="#consult" class="sol-card">
+                    <div class="sol-img bg-sol-1" role="img" aria-label="IT consultancy meeting"></div>
                     <div class="sol-info">
                         <svg viewBox="0 0 24 24">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -1072,8 +1304,8 @@
                     </div>
                 </a>
 
-                <a href="#" class="sol-card">
-                    <div class="sol-img" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800');"></div>
+                <a href="#network" class="sol-card">
+                    <div class="sol-img bg-sol-2" role="img" aria-label="Network infrastructure"></div>
                     <div class="sol-info">
                         <svg viewBox="0 0 24 24">
                             <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
@@ -1085,8 +1317,8 @@
                     </div>
                 </a>
 
-                <a href="#" class="sol-card">
-                    <div class="sol-img" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800');"></div>
+                <a href="#securities" class="sol-card">
+                    <div class="sol-img bg-sol-3" role="img" aria-label="Network security lock"></div>
                     <div class="sol-info">
                         <svg viewBox="0 0 24 24">
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -1096,8 +1328,8 @@
                     </div>
                 </a>
 
-                <a href="#" class="sol-card">
-                    <div class="sol-img" style="background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=800&auto=format&fit=crop');"></div>
+                <a href="#system" class="sol-card">
+                    <div class="sol-img bg-sol-4" role="img" aria-label="Computer system and storage"></div>
                     <div class="sol-info">
                         <svg viewBox="0 0 24 24">
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -1108,8 +1340,8 @@
                     </div>
                 </a>
 
-                <a href="#" class="sol-card">
-                    <div class="sol-img" style="background-image: url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800');"></div>
+                <a href="#surveillance" class="sol-card">
+                    <div class="sol-img bg-sol-5" role="img" aria-label="Surveillance camera system"></div>
                     <div class="sol-info">
                         <svg viewBox="0 0 24 24">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -1119,8 +1351,8 @@
                     </div>
                 </a>
 
-                <a href="#" class="sol-card">
-                    <div class="sol-img" style="background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800');"></div>
+                <a href="#infrastructure" class="sol-card">
+                    <div class="sol-img bg-sol-6" role="img" aria-label="IT infrastructure tools"></div>
                     <div class="sol-info">
                         <svg viewBox="0 0 24 24">
                             <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
@@ -1129,9 +1361,35 @@
                     </div>
                 </a>
 
+                <a href="#ransomware" class="sol-card">
+                    <div class="sol-img bg-sol-7" role="img" aria-label="Cybersecurity shield protection"></div>
+                    <div class="sol-info">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M9 12l2 2 4-4"></path>
+                        </svg>
+                        <h3>Ransomware Rescue</h3>
+                    </div>
+                </a>
+
+                <a href="#event" class="sol-card">
+                    <div class="sol-img bg-sol-8" role="img" aria-label="Event organization calendar"></div>
+                    <div class="sol-info">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <h3>Event Organizer</h3>
+                    </div>
+                </a>
+
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- ============================================
          FOOTER
@@ -1152,15 +1410,16 @@
                         <h4>Quicklinks</h4>
                         <ul class="f-links">
                             <li><a href="#home">Home</a></li>
-                            <li><a href="#solutions">Solutions</a></li>
-                            <li><a href="#impact">Services</a></li>
-                            <li><a href="#contact">About Us</a></li>
+                            <li><a href="#aboutus">About Us</a></li>
+                            <li><a href="#solution">Solutions</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#contacts">Contact</a></li>
                         </ul>
                     </div>
 
                     <div class="f-col">
                         <h4>Contacts</h4>
-                        <a href="mailto:sales@netiz.io" class="f-email"><span class="__cf_email__" data-cfemail="7201131e1701321c17061b085c1b1d"><span class="__cf_email__" data-cfemail="b2c1d3ded7c1f2dcd7c6dbc89cdbdd">sales@netiz.io</span></span></a>
+                        <a href="/cdn-cgi/l/email-protection#0172606d6472416f6475687b2f686e" class="f-email"><span class="__cf_email__" data-cfemail="7201131e1701321c17061b085c1b1d"><span class="__cf_email__" data-cfemail="b2c1d3ded7c1f2dcd7c6dbc89cdbdd"><span class="__cf_email__" data-cfemail="90e3f1fcf5e3d0fef5e4f9eabef9ff">[email&#160;protected]</span></span></span></a>
                         
                         <div class="f-social-grid">
                             <a href="#" class="f-social-btn" title="LINE" aria-label="LINE">
@@ -1190,7 +1449,7 @@
 
             <div class="footer-bottom">
                 <div class="f-copy">
-                    © 2026 Netiz Co., Ltd. <span class="f-copy-line">All rights reserved.</span>
+                    © <span id="current-year">2026</span> Netiz Co., Ltd. <span class="f-copy-line">ALL RIGHTS RESERVED.</span>
                 </div>
                 <div class="f-status">
                     SITE STATUS: <span>ACTIVE</span> // SECURED
@@ -1202,11 +1461,15 @@
     <!-- ============================================
          JAVASCRIPT
          ============================================ -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
         const nav = document.getElementById('navbar');
         const toggle = document.getElementById('mobile-toggle');
         const menu = document.getElementById('mobile-menu');
         const mLinks = document.querySelectorAll('.m-link');
+
+        // Set current year in footer copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // Function to update navbar state based on scroll position
         function updateNavbar() {
@@ -1225,9 +1488,10 @@
 
         // Mobile Menu Toggle
         toggle.addEventListener('click', () => {
-            toggle.classList.toggle('open');
+            const isOpen = toggle.classList.toggle('open');
             menu.classList.toggle('active');
             document.body.classList.toggle('menu-open');
+            toggle.setAttribute('aria-expanded', isOpen);
         });
 
         // Close Mobile Menu on Link Click
@@ -1236,6 +1500,7 @@
                 toggle.classList.remove('open');
                 menu.classList.remove('active');
                 document.body.classList.remove('menu-open');
+                toggle.setAttribute('aria-expanded', 'false');
             });
         });
     </script>
