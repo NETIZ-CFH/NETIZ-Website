@@ -168,12 +168,12 @@
         .nav-right { 
             display: flex; 
             align-items: center; 
-            gap: 30px;
+            gap: 15px; /* Mobile first - smaller gap */
             flex-shrink: 0;
         }
 
         .nav-links { 
-            display: flex; 
+            display: none; /* Mobile first - hidden by default */
             gap: 10px; 
         }
 
@@ -235,7 +235,7 @@
 
         /* Mobile Menu Toggle */
         .menu-toggle { 
-            display: none; 
+            display: block; /* Mobile first - visible by default */
             cursor: pointer; 
             z-index: 1001;
             position: relative;
@@ -323,24 +323,27 @@
            ============================================ */
         .hero-mosaic {
             display: flex;
+            flex-direction: column; /* Mobile first - stacked */
             width: 100%;
-            height: calc(100vh - var(--nav-height));
-            max-height: 900px;
-            min-height: 600px;
+            height: auto; /* Mobile first - auto height */
+            max-height: none;
+            min-height: auto;
             overflow: hidden;
-            margin-top: var(--nav-height);
+            margin-top: 70px; /* Mobile nav height */
         }
 
         /* LEFT SIDE: BRAND IDENTITY */
         .hero-id-panel {
-            flex: 0 0 50%;
+            flex: 0 0 auto; /* Mobile first */
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 5% 8%;
+            padding: 60px 8% 40px; /* Mobile first padding */
             background: var(--bg);
             z-index: 10;
+            min-height: auto;
         }
 
         .brand-core-stack {
@@ -393,11 +396,11 @@
 
         /* RIGHT SIDE: 2x2 SERVICE MOSAIC */
         .hero-visual-panel {
-            flex: 0 0 50%;
+            flex: 1 1 auto; /* Mobile first - flexible */
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            border-left: 1px solid var(--glass-border);
+            grid-template-columns: 1fr 1fr; /* Mobile - 2 columns */
+            grid-template-rows: auto auto; /* Mobile - auto rows */
+            border-left: none; /* Mobile - no border */
         }
 
         .mosaic-cell {
@@ -406,9 +409,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 30px;
+            padding: 20px; /* Mobile first - smaller padding */
             border: 0.5px solid var(--glass-border);
             background: var(--bg);
+            min-height: 180px; /* Mobile first */
         }
 
         .mosaic-img {
@@ -465,8 +469,8 @@
         .section-impact {
             background-color: var(--black);
             color: var(--text-white);
-            padding: 120px 5%;
-            min-height: 550px;
+            padding: 60px 5%; /* Mobile first - smaller padding */
+            min-height: auto; /* Mobile first */
             display: flex;
             align-items: center;
             border-top: 2px solid var(--primary);
@@ -474,8 +478,8 @@
 
         .impact-wrapper {
             display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 60px;
+            grid-template-columns: 1fr; /* Mobile first - single column */
+            gap: 40px; /* Mobile first - smaller gap */
             width: 100%;
             max-width: 1600px;
             margin: 0 auto;
@@ -506,14 +510,14 @@
 
         .impact-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr); /* Mobile first - 2 columns */
+            gap: 15px; /* Mobile first - smaller gap */
         }
 
         .impact-card {
             position: relative;
-            height: 380px;
-            padding: 40px 25px;
+            height: 190px; /* Mobile first - smaller height */
+            padding: 25px 15px; /* Mobile first - smaller padding */
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -558,8 +562,12 @@
             letter-spacing: -3px;
         }
 
+        .card-big-num {
+            font-size: 48px; /* Mobile first - smaller */
+        }
+
         .card-big-label {
-            font-size: 18px;
+            font-size: 14px; /* Mobile first - smaller */
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -569,7 +577,7 @@
         }
 
         .card-big-info {
-            font-size: 16px;
+            font-size: 13px; /* Mobile first - smaller */
             color: rgba(255, 255, 255, 0.85);
             line-height: 1.5;
             font-weight: 500;
@@ -624,9 +632,10 @@
         }
 
         .solutions-grid {
+            background: white;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            /*gap: 15px;*/  
+            grid-template-columns: repeat(2, 1fr); /* Mobile first - 2 columns */
+            gap: 1px; /* Mobile first - smaller gap */
         }
 
         .sol-card {
@@ -641,6 +650,7 @@
             overflow: hidden;
             transition: transform 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            pointer-events: none; /* Mobile first - disabled */
         }
 
         .sol-img {
@@ -678,22 +688,22 @@
             left: 0;
             right: 0;
             z-index: 3;
-            padding: 25px;
+            padding: 20px; /* Mobile first - smaller */
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px; /* Mobile first - smaller */
         }
 
         .sol-info svg {
-            width: 42px;
-            height: 42px;
+            width: 32px; /* Mobile first - smaller */
+            height: 32px; /* Mobile first - smaller */
             stroke: var(--primary);
             stroke-width: 2.5;
             fill: none;
         }
 
         .sol-info h3 {
-            font-size: 20px;
+            font-size: 16px; /* Mobile first - smaller */
             font-weight: 800;
             color: var(--text-white);
             text-transform: uppercase;
@@ -712,7 +722,7 @@
 
         /* Decorative sol-cards - 2x2 color grid */
         .sol-card-decorative {
-            display: block;
+            display: none; /* Mobile first - hidden */
             overflow: visible;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -766,15 +776,15 @@
 
         .standard-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr; /* Mobile first - single column */
             gap: 30px; 
         }
 
         .standard-col {
             position: relative;
             background-color: #ffffff;
-            padding: 60px 40px;
-            min-height: 380px;
+            padding: 40px 30px; /* Mobile first - smaller padding */
+            min-height: auto; /* Mobile first - auto height */
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -861,14 +871,18 @@
 
         .footer-main {
             display: flex;
+            flex-direction: column; /* Mobile first - stacked */
             width: 100%;
-            margin-bottom: 60px;
+            margin-bottom: 0; /* Mobile first */
         }
 
         .footer-left {
-            flex: 0 0 50%;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            padding-right: 40px;
+            flex: 0 0 100%; /* Mobile first - full width */
+            border-right: none; /* Mobile first - no right border */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Mobile first - bottom border */
+            padding-right: 0; /* Mobile first */
+            padding-bottom: 40px; /* Mobile first */
+            margin-bottom: 40px; /* Mobile first */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -899,11 +913,16 @@
         }
 
         .footer-right {
-            flex: 0 0 50%;
-            padding-left: 60px;
+            flex: 0 0 100%; /* Mobile first - full width */
+            padding-left: 0; /* Mobile first */
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1fr; /* Mobile first - single column */
+            gap: 40px; /* Mobile first */
+        }
+
+        /* Hide Quicklinks on mobile by default */
+        .footer-right .f-col:first-child {
+            display: none; /* Mobile first - hidden */
         }
 
         .f-col h4 {
@@ -950,12 +969,13 @@
         .f-social-grid {
             display: flex;
             gap: 12px;
+            margin-bottom: 20px;
         }
 
         .f-social-btn {
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.088);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -978,16 +998,24 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 30px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column; /* Mobile first - stacked */
+            align-items: flex-start; /* Mobile first */
+            gap: 20px; /* Mobile first */
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
         }
 
         .f-copy { 
-            color: rgba(255, 255, 255, 0.4); 
+            color: rgba(255, 255, 255, 0.4);
+            display: block; /* Mobile first */
+            width: 100%; /* Mobile first */
             max-width: 300px;
             line-height: 1.6;
+        }
+
+        .f-copy-line {
+            display: block; /* Mobile first */
+            margin-top: 4px; /* Mobile first */
         }
 
         .f-status {
@@ -1001,120 +1029,16 @@
         /* ============================================
            RESPONSIVE DESIGN
            ============================================ */
-        @media (max-width: 1200px) {
-            .impact-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-            }
-            
-            .impact-wrapper { 
-                grid-template-columns: 1fr; 
-            }
-            
-            .impact-card { 
-                height: 320px; 
-            }
-        }
+        /* ============================================
+           RESPONSIVE DESIGN - MOBILE FIRST
+           Breakpoints: Mobile (base), Tablet (768px), Laptop (1024px), Desktop (1280px)
+           ============================================ */
 
-        @media (max-width: 1200px) { 
-            .solutions-grid { 
-                grid-template-columns: repeat(3, 1fr); 
-            } 
-        }
-
-        @media (max-width: 1100px) { 
-            .solutions-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-            }
-
-            /* Standard section - stack to single column */
-            .standard-grid { 
-                grid-template-columns: 1fr; 
-            }
-            
-            .standard-col { 
-                min-height: auto; 
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .nav-links { 
-                display: none; 
-            }
-            
-            .menu-toggle { 
-                display: block; 
-            }
-
-            /* Reduce nav spacing on mobile */
-            .nav-right {
-                gap: 15px;
-            }
-
-            .nav-container {
-                padding: 0 4%;
-            }
-            
-            .hero-mosaic { 
-                flex-direction: column; 
-                margin-top: 70px;
-                height: calc(100vh - 70px);
-                max-height: 800px;
-                min-height: 500px;
-            }
-            
-            .hero-id-panel { 
-                flex: 0 0 auto; 
-                padding: 40px 8% 30px;
-                min-height: 280px;
-            }
-            
-            .hero-visual-panel { 
-                flex: 1 1 auto; 
-                grid-template-columns: 0.5fr 0.5fr;
-                grid-template-rows: 1fr 1fr; 
-            }
-            
-            .mosaic-cell { 
-                padding: 25px; 
-            }
-            
-            .mosaic-cell h3 {
-                font-size: clamp(18px, 3vw, 24px);
-            }
-            
-            .mosaic-cell p {
-                font-size: 13px;
-            }
-
-            .footer-main { 
-                flex-direction: column; 
-            }
-            
-            .footer-left { 
-                flex: 0 0 100%; 
-                border-right: none; 
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-                padding-bottom: 40px; 
-                margin-bottom: 40px; 
-            }
-            
-            .footer-right { 
-                flex: 0 0 100%; 
-                padding-left: 0; 
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-mosaic {
-                height: auto;
-                max-height: none;
-                min-height: auto;
-            }
-            
-            .hero-id-panel {
-                min-height: 250px;
-            }
-            
+        /* ========================================
+           TABLET: 768px and up
+           ======================================== */
+        @media (min-width: 768px) {
+            /* Hero Section */
             .hero-visual-panel {
                 grid-template-columns: 0.5fr 0.5fr;
                 grid-template-rows: auto auto;
@@ -1123,88 +1047,215 @@
             .mosaic-cell {
                 min-height: 180px;
             }
-        }
 
-        @media (max-width: 700px) { 
-            .solutions-grid { 
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .sol-card {
-                /* Maintain square aspect ratio */
-                pointer-events: none; /* Disable clicks on mobile */
-            }
-
-            /* Hide decorative cards on mobile */
-            .sol-card-decorative {
-                display: none;
-            }
-            
-            .sol-info {
-                padding: 20px;
-                gap: 15px;
-            }
-            
-            .sol-info svg {
-                width: 32px;
-                height: 32px;
-            }
-            
-            .sol-info h3 {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 650px) {
+            /* Impact Section - 2 columns */
             .impact-grid { 
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             
             .impact-card {
-                height: 190px;
-                padding: 25px 15px;
+                height: 240px;
             }
-            
-            .card-big-num {
-                font-size: 48px;
+
+            /* Solutions Section - 3 columns */
+            .solutions-grid {
+                background: white;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1px;
             }
-            
-            .card-big-label {
-                font-size: 14px;
+
+            .solutions-grid .sol-card-decorative:first-of-type {
+                display: block;
             }
-            
-            .card-big-info {
-                font-size: 13px;
+
+            /* Standard Section - 2 columns */
+            .standard-grid { 
+                grid-template-columns: repeat(2, 1fr); 
             }
-            
-            /* Reduce top padding for Regional Excellence section in mobile */
-            .section-impact {
-                padding: 60px 5%;
+
+            /* Footer */
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
-            
-            /* Hide Quicklinks section in footer on mobile */
-            .footer-right .f-col:first-child {
-                display: none;
+
+            .f-copy {
+                width: auto;
+            }
+
+            .f-copy-line {
+                display: inline;
+                margin-top: 0;
             }
         }
 
-        @media (max-width: 600px) {
-            .footer-bottom { 
-                flex-direction: column; 
-                align-items: flex-start; 
-                gap: 20px; 
+        /* ========================================
+           LAPTOP: 1024px and up
+           ======================================== */
+        @media (min-width: 1024px) {
+            /* Navigation - Show desktop nav */
+            .nav-links { 
+                display: flex; 
             }
             
-            .f-copy { 
+            .menu-toggle { 
+                display: none; 
+            }
+
+            .nav-right {
+                gap: 30px;
+            }
+
+            .nav-container {
+                padding: 0 5%;
+            }
+
+            /* Hero Section - Side by side */
+            .hero-mosaic { 
+                flex-direction: row;
+                margin-top: var(--nav-height);
+                height: calc(100vh - var(--nav-height));
+                max-height: 900px;
+                min-height: 600px;
+            }
+            
+            .hero-id-panel { 
+                flex: 0 0 50%;
+                padding: 5% 8%;
+                min-height: auto;
+            }
+            
+            .hero-visual-panel { 
+                flex: 0 0 50%;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+            
+            .mosaic-cell { 
+                padding: 30px;
+                min-height: auto;
+            }
+            
+            .mosaic-cell h3 {
+                font-size: clamp(20px, 2vw, 30px);
+            }
+            
+            .mosaic-cell p {
+                font-size: 14px;
+            }
+
+            /* Impact Section - 4 columns */
+            .impact-wrapper { 
+                grid-template-columns: 1fr 3fr;
+                gap: 60px;
+            }
+
+            .impact-grid { 
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            
+            .impact-card { 
+                height: 380px;
+            }
+
+            .impact-card {
+                padding: 40px 25px;
+            }
+            
+            .card-big-num {
+                font-size: 64px;
+            }
+            
+            .card-big-label {
+                font-size: 18px;
+            }
+            
+            .card-big-info {
+                font-size: 16px;
+            }
+
+            .section-impact {
+                padding: 120px 5%;
+            }
+
+            /* Solutions Section - 4 columns */
+            .solutions-grid {
+                background: white;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 1px;
+            }
+
+            .sol-card {
+                pointer-events: auto;
+            }
+
+            .sol-card-decorative {
                 display: block;
-                width: 100%;
             }
             
-            .f-copy-line { 
-                display: block; 
-                margin-top: 4px; 
+            .sol-info {
+                padding: 25px;
+                gap: 20px;
+            }
+            
+            .sol-info svg {
+                width: 42px;
+                height: 42px;
+            }
+            
+            .sol-info h3 {
+                font-size: 20px;
+            }
+
+            /* Standard Section - 3 columns */
+            .standard-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+            }
+            
+            .standard-col { 
+                min-height: 380px; 
+            }
+
+            /* Footer - Side by side */
+            .footer-main { 
+                flex-direction: row;
+                margin-bottom: 60px;
+            }
+            
+            .footer-left { 
+                flex: 0 0 50%;
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: none;
+                padding-right: 40px;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+            
+            .footer-right { 
+                flex: 0 0 50%;
+                padding-left: 40px;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-right .f-col:first-child {
+                display: block;
+            }
+        }
+
+        /* ========================================
+           DESKTOP: 1280px and up
+           ======================================== */
+        @media (min-width: 1280px) {
+            /* Fine-tune spacing and sizes for large screens */
+            .impact-card { 
+                height: 380px; 
+            }
+
+            .standard-col {
+                padding: 60px 40px;
             }
         }
     </style>
@@ -1231,8 +1282,8 @@
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+66-x-xxxx-xxxx",
-            "contactType": "Sales",
-            "email": "sales@netiz.io",
+            "contactType": "Support",
+            "email": "my@netiz.io",
             "availableLanguage": ["English", "Thai"]
         },
         "areaServed": [
@@ -1655,27 +1706,12 @@
 
                     <div class="f-col">
                         <h4>Contacts</h4>
-                        <a href="mailto:sales@netiz.io" class="f-email"><span class="__cf_email__" data-cfemail="0370626f6670436d66776a792d6a6c">sales@netiz.io</span></a>
+                        <a href="mailto:my@netiz.io" class="f-email"><span class="__cf_email__" data-cfemail="0370626f6670436d66776a792d6a6c"><span class="__cf_email__" data-cfemail="b4d9cdf4dad1c0ddce9adddb">my@netiz.io</span></span></a>
                         
                         <div class="f-social-grid">
-                            <a href="#" class="f-social-btn" title="LINE" aria-label="LINE">
+                            <a href="https://maps.app.goo.gl/vPftdrCX83YWcQGx7" target="_blank" rel="noopener noreferrer" class="f-social-btn" title="View our location on Google Maps" aria-label="Google Maps">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="f-social-btn" title="WhatsApp" aria-label="WhatsApp">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .004 5.411.001 12.05c0 2.12.555 4.189 1.609 6.01L0 24l6.117-1.605a11.803 11.803 0 005.925 1.586h.005c6.635 0 12.046-5.411 12.049-12.051a11.83 11.83 0 00-3.53-8.413z"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="f-social-btn" title="WeChat" aria-label="WeChat">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1 .207-.665C23.085 18.14 24 16.42 24 14.514c0-3.814-3.543-6.88-8.063-6.88zm-3.557 4.16c.591 0 1.071.49 1.071 1.095 0 .603-.48 1.094-1.071 1.094-.593 0-1.072-.49-1.072-1.094 0-.606.479-1.095 1.072-1.095zm5.153 0c.591 0 1.071.49 1.071 1.095 0 .603-.48 1.094-1.071 1.094-.593 0-1.072-.49-1.072-1.094 0-.606.479-1.095 1.072-1.095z"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="f-social-btn" title="Facebook" aria-label="Facebook">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                                 </svg>
                             </a>
                         </div>
@@ -1685,7 +1721,7 @@
 
             <div class="footer-bottom">
                 <div class="f-copy">
-                    © <span id="current-year">2026</span> Netiz Co., Ltd. <span class="f-copy-line">ALL RIGHTS RESERVED.</span>
+                    © <span id="current-year">2026</span> NETIZ CO., LTD. <span class="f-copy-line">ALL RIGHTS RESERVED.</span>
                 </div>
                 <div class="f-status">
                     SITE STATUS: <span>ACTIVE</span> // SECURED
@@ -1697,7 +1733,7 @@
     <!-- ============================================
          JAVASCRIPT
          ============================================ -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         const nav = document.getElementById('navbar');
         const toggle = document.getElementById('mobile-toggle');
@@ -1734,7 +1770,7 @@
         mLinks.forEach(link => {
             link.addEventListener('click', () => {
                 toggle.classList.remove('open');
-                menu.classList.remove('active');
+                   menu.classList.remove('active');
                 document.body.classList.remove('menu-open');
                 toggle.setAttribute('aria-expanded', 'false');
             });
